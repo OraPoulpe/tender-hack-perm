@@ -1,0 +1,8 @@
+{
+  "plugins": ["prettier-plugin-tailwindcss"],
+
+  "endOfLine": "crlf",
+  "printWidth": 100,
+  "tabWidth": 2,
+  "trailingComma": "es5"
+}
