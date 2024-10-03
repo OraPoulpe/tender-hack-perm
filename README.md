@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛠️ Решение кейса на Tender Hack 2024 Пермь
 
-## Getting Started
 
-First, run the development server:
+Этот проект был разработан в рамках хакатона **Tender Hack 2024** в Перми, где наша команда **Acmenra.hack** заняла 🥈 2-е место. Мы создали дополнительный функционал для чата на **Портале Поставщиков**, который помогает пользователям легко формировать дополнительные соглашения по договорам.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 📋 О проекте
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Основной функционал:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Просмотр доступных договоров заказчика и поставщика
+- Чат для консультаций по формированию дополнительных соглашений
+- Автоматическое формирование дополнительного соглашения с выбором причины и вводом новых данных
+- Скачивание сформированного документа
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## <img src="https://feature-sliced.design/img/brand/logo-primary.png" alt="Image 1" height="15"/> Архитектура
 
-## Learn More
+На фронтенде используется **Feature Slices Design**, подход, который разделяет проект на независимые функциональные блоки. Это позволяет поддерживать и расширять код более гибко и структурированно.
 
-To learn more about Next.js, take a look at the following resources:
+## 🛠 Используемые технологии
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Технология                                                                                                    | Описание                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| ![NextJS](https://skillicons.dev/icons?i=next)                                                                | **Next.js** - Фреймворк для React, используемый для создания серверно-рендеренных приложений и статических сайтов на React. |
+| ![TypeScript](https://skillicons.dev/icons?i=ts)                                                              | **TypeScript** - Надстройка над JavaScript, которая добавляет статическую типизацию для повышения надежности кода.          |
+| <img src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg" alt="Ant Design" height="48"/> | **Ant Design** - Библиотека компонентов для React с поддержкой темизации и обширным набором готовых решений.                |
+| ![Tailwind CSS](https://skillicons.dev/icons?i=tailwind)                                                      | **Tailwind CSS** - Утилитарный CSS-фреймворк для быстрой разработки с фокусом на производительность.                        |
+| ![SCSS](https://skillicons.dev/icons?i=sass)                              | **SCSS with CSS Modules** - Мощный препроцессор для написания стилизованных модулей с поддержкой локальных стилей.          |
+| ![RTK Query](https://skillicons.dev/icons?i=redux)                                                      | **RTK Query** - Инструмент для управления состоянием в приложении и работы с API в Redux Toolkit.                           |
+| ![Redux Toolkit](https://skillicons.dev/icons?i=redux)                                                   | **Redux Toolkit** - Официальная надстройка для упрощения работы с Redux, управления состоянием и API.                       |
+| <img src="https://kims-rf.ru/wp-content/uploads/2022/03/1.png" style='border-radius: 10px;' alt="WebSocket" height="48"/>                           | **WebSocket** - Протокол для обмена данными в реальном времени, использованный для чата.                                    |
+| 🐶 | **Husky** - Инструмент для настройки pre-commit хуков, используемый для проверки качества кода перед коммитами.             |
+| <img src="https://www.svgrepo.com/show/373588/eslint2.svg" style='border-radius: 10px;' alt="ESlint" height="48"/>                                 | **ESLint** - Инструмент для анализа кода на наличие ошибок и соблюдения стандартов кодирования.                             |
+| <img src="https://prettier.io/icon.png" style='border-radius: 10px;' alt="Prettier" height="48"/>                                                                   | **Prettier** - Инструмент для автоматического форматирования кода по единому стилю.                                         |
+| ![Webpack](https://skillicons.dev/icons?i=webpack)                                   | **Webpack** - Модульный бандлер для JavaScript приложений, используемый для сборки проекта.                                 |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🚀 Запуск проекта
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Собирите проект:
+   ```bash
+   make build
+   ```
+2. Запустите проект (сайт будет запущен на http://localhost:3000/):
+   ```bash
+   make run
+   ```

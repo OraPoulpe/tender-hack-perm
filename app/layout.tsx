@@ -6,7 +6,6 @@ import ConfigProviderAntd from "@/src/shared/antd/config.provider";
 import { Providers } from "@/src/shared/lib/store/providers";
 import { LoginLayout, MainLayout } from "@/src/shared/components/layout";
 
-
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -30,9 +29,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased `}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <AntdRegistry>
-          <ConfigProviderAntd >
+          <ConfigProviderAntd>
             <Providers>
               <MainLayout>{children}</MainLayout>
             </Providers>
@@ -42,4 +41,3 @@ export default function RootLayout({
     </html>
   );
 }
-

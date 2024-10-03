@@ -1,10 +1,8 @@
-import { Contracts } from '@/src/widgets/contracts'
-import React, { FC } from 'react'
+import { Contracts } from "@/src/widgets/contracts";
+import React, { FC } from "react";
 
 const ContractPage: FC = () => {
-  return (
-    <Contracts/>
-  )
-}
+  return <Contracts />;
+};
 
-export default ContractPage
+export default ContractPage;

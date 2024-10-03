@@ -26,7 +26,7 @@ export const authConfig: AuthOptions = {
   ],
   session: {
     maxAge: 60 * 60 * 24, // Время сессии в секундах (24 часа)
-    updateAge: 60 * 60,   // Время обновления сессии (каждый час)
+    updateAge: 60 * 60, // Время обновления сессии (каждый час)
   },
   pages: {
     signIn: "/login",
