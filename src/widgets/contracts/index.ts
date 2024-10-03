@@ -1,1 +1,1 @@
-export { default as Contracts } from './ui/Contracts'
+export { default as Contracts } from "./ui/Contracts";

@@ -1,5 +1,4 @@
-"use client"
-
+"use client";
 
 export function LoginLayout({ children }: { children: React.ReactNode }) {
   // console.log("use login layout");

@@ -14,11 +14,14 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import Image from "next/image";
 import { Content } from "antd/es/layout/layout";
+import { useLogoutUserMutation } from "@/src/shared/api/user/userApi";
 
 export function MainLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+const [logout] = useLogoutUserMutation()
 
   const showModalSign = () => {
     setIsModalOpen(true);
@@ -27,14 +30,15 @@ export function MainLayout({ children }: { children: React.ReactNode }) {
   const handleOk = () => {
     setIsModalOpen(false);
   };
-  
+
   const handleCancel = () => {
+    logout()
     signOut({ callbackUrl: "/login" });
     setIsModalOpen(false);
   };
 
   const session = useSession();
-  console.log("sess", session);
+  // console.log("sess", session);
 
   const items = [
     {
@@ -89,7 +93,7 @@ export function MainLayout({ children }: { children: React.ReactNode }) {
           className="h-full bg-white"
           breakpoint="lg"
           collapsedWidth="0"
-          // theme="light"
+          theme="light"
           // onBreakpoint={(broken) => {
           //   console.log(broken);
           // }}
@@ -112,8 +116,17 @@ export function MainLayout({ children }: { children: React.ReactNode }) {
           </Content>
           <Menu mode="inline" className="mt-5 h-full" items={items} />
         </Sider>
-        <Layout className=" bg-slate-100 h-screen w-full">{children}</Layout>
-        <Modal title="Выход" cancelText={'Выйти'} okText={'Остаться'} open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>Вы уверены, что хотите выйти?</Modal>
+        <Layout className="h-screen w-full bg-slate-100">{children}</Layout>
+        <Modal
+          title="Выход"
+          cancelText={"Выйти"}
+          okText={"Остаться"}
+          open={isModalOpen}
+          onOk={handleOk}
+          onCancel={handleCancel}
+        >
+          Вы уверены, что хотите выйти?
+        </Modal>
       </Layout>
     );
   }

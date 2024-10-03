@@ -1,1 +1,1 @@
-export { default as ContractPage } from './ui/ContractPage'
+export { default as ContractPage } from "./ui/ContractPage";

@@ -1,1 +1,1 @@
-export { default as ChatInput } from './ui/ChatInput'
+export { default as ChatInput } from "./ui/ChatInput";

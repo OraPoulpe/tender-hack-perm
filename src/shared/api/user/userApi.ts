@@ -36,6 +36,14 @@ export const userApi = createApi({
         };
       },
     }),
+    logoutUser: build.mutation<void, void>({
+      query: () => {
+        return {
+          url: `/users/logout`,
+          method: "POST",
+        };
+      },
+    }),
 
     getUserMe: build.query<IUser, void>({
       query: () => ({
@@ -46,4 +54,4 @@ export const userApi = createApi({
   }),
 });
 
-export const { useLoginUserMutation, useGetUserMeQuery } = userApi;
+export const { useLoginUserMutation, useGetUserMeQuery, useLogoutUserMutation } = userApi;

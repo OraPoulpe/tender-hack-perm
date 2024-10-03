@@ -7,7 +7,6 @@ export interface IMessage {
   input?: IInputMessage;
   type: "form" | "input" | "table";
   placeholder?: string;
-
 }
 
 export interface IButtonMessage {
@@ -31,6 +30,5 @@ export interface IInputMessage {
 export interface IMessagePops extends IMessage {
   disabled?: boolean;
   handleNewAction: (state: string) => void;
-  table?: true
-
+  table?: true;
 }

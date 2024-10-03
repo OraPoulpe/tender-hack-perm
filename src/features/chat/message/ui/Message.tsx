@@ -15,20 +15,33 @@ const Message: FC<IMessagePops> = ({
   disabled = false,
   handleNewAction,
   placeholder,
-  table
-
+  table,
 }) => {
-
-  const { Text,Paragraph, Link } = Typography;
-  const [textInputMessage, setTextInputMessage] = useState<string | string[]>("");
+  const { Text, Paragraph, Link } = Typography;
+  const [textInputMessage, setTextInputMessage] = useState<string>("");
 
   const handleSendInputMessage = () => {
-    handleNewAction("*" + textInputMessage)
+    handleNewAction("*" + textInputMessage);
+    disabled = true
+    // setTextInputMessage('')
+  };
+  
+
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === "Enter") {
+      if (e.ctrlKey) {
+        return;
+      } else {
+        e.preventDefault();
+
+        handleSendInputMessage();
+      }
+    }
   };
 
   return (
     <div
-      className={`w-3/4 rounded-2xl flex flex-col p-4 gap-2 ${from === "user" ? "self-end bg-blue-100" : "bg-slate-200"}`}
+      className={`flex w-3/4 flex-col gap-2 rounded-2xl p-4 ${from === "user" ? "self-end bg-blue-100" : "bg-slate-200"}`}
     >
       {/* <Text>{from === 'system' ? "Bot" : "Пользователь"}</Text> */}
       <Paragraph>{text}</Paragraph>
@@ -58,7 +71,6 @@ const Message: FC<IMessagePops> = ({
               type="primary"
               size="large"
               key={key}
-              // onClick={() => handleNewAction("*" + String(button.to))}
               onClick={() => handleNewAction(String(button.to))}
             >
               {button.text}
@@ -66,8 +78,8 @@ const Message: FC<IMessagePops> = ({
           ))}
         </Flex>
       )}
-      {type === "input" && from !== 'user' && (
-        <Flex gap={8} className=" w-full">
+      {type === "input" && from !== "user" && (
+        <Flex gap={8} className="w-full">
           {/* {input.type === "text" ? (
             <Input
               disabled={disabled}
@@ -82,17 +94,21 @@ const Message: FC<IMessagePops> = ({
             />
           )} */}
           <Input
-              disabled={disabled}
-              placeholder={placeholder}
-              onChange={(e) => setTextInputMessage(e.target.value)}
-            />
+            disabled={disabled}
+            placeholder={placeholder}
+            onChange={(e) => setTextInputMessage(e.target.value)}
+            value={textInputMessage}
+            // onKeyDown={(e:)=>handleKeyPress(e)}
+          />
 
           <Button type="primary" disabled={disabled} onClick={handleSendInputMessage}>
             Сохранить
           </Button>
         </Flex>
       )}
-      <Text className={` ${from === "user" ? "self-end " : "self-start"}`} type="secondary">{created_datetime && created_datetime.slice(11,16)}</Text>
+      <Text className={` ${from === "user" ? "self-end" : "self-start"}`} type="secondary">
+        {created_datetime && created_datetime.slice(11, 16)}
+      </Text>
     </div>
   );
 };

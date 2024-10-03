@@ -1,2 +1,2 @@
 export { MainLayout } from "./ui/MainLayout";
-export { LoginLayout } from './ui/LoginLayout'
+export { LoginLayout } from "./ui/LoginLayout";

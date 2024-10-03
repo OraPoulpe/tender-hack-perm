@@ -12,7 +12,13 @@ const reducers = combineReducers({
 export const store = configureStore({
   reducer: reducers,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware()
+    getDefaultMiddleware({
+      serializableCheck: {
+        // Игнорируем проверку сериализуемости для этих путей
+        ignoredActions: [contractsApi.reducerPath],
+        ignoredPaths: ["contracts.queries.getContractFile"],
+      },
+    })
       .concat(userApi.middleware)
       .concat(contractsApi.middleware)
       .concat(chatApi.middleware),
