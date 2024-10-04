@@ -16,7 +16,9 @@ const FileMessage: FC = () => {
     const fetchDocument = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`https://acmenra.tech/api/contracts/agreements/get/6/document`);
+        const response = await fetch(
+          `https://acmenra.tech/api/contracts/agreements/get/6/document`
+        );
         if (!response.ok) {
           throw new Error("Ошибка при получении файла");
         }
@@ -55,7 +57,7 @@ const FileMessage: FC = () => {
   };
 
   return (
-    <div className='bg-slate-200} flex w-3/4 flex-col gap-2 rounded-2xl p-4'>
+    <div className="bg-slate-200} flex w-3/4 flex-col gap-2 rounded-2xl p-4">
       <FileWordOutlined style={{ fontSize: "32px", color: "#08c" }} />
       {/* <Typography>{name_file}</Typography> */}
       <Button icon={<DownloadOutlined />} onClick={downloadFile} />

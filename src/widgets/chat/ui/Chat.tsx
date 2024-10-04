@@ -43,7 +43,7 @@ const Chat: FC = () => {
       };
 
       socketRef.current.onerror = (error) => {
-        setShowFile(true)
+        setShowFile(true);
         console.error("Ошибка WebSocket соединения:", error);
       };
 
@@ -66,10 +66,10 @@ const Chat: FC = () => {
         id: messages[messages.length - 1].id + 1,
       };
 
-      console.log('message', message)
+      console.log("message", message);
 
-      if (message.text ==="*38"){
-        setShowFile(true)
+      if (message.text === "*38") {
+        setShowFile(true);
       }
 
       setMessages((prevMessages) => [...prevMessages, message]);
@@ -88,8 +88,8 @@ const Chat: FC = () => {
   };
 
   const handleNewAction = (state: string) => {
-    if (state ==="*38"){
-      setShowFile(true)
+    if (state === "*38") {
+      setShowFile(true);
     }
     if (socketRef.current) {
       socketRef.current.send(state);
@@ -109,61 +109,58 @@ const Chat: FC = () => {
 
   const [isPreviewOpen, setIsPreviewOpen] = useState<boolean>(false);
 
-
-
   const [showFile, setShowFile] = useState<boolean>(false);
 
   return (
     <Flex vertical justify="end" gap={15} className="h-screen w-full pb-4 pl-4">
-        {isLoading ? (
-          <>
-            <Skeleton.Button active={true} size="large" block={true} />
-            <Skeleton.Button active={true} size="large" block={true} />
-            <Skeleton.Button active={true} size="large" block={true} />
-          </>
-        ) : (
-          // <Flex>
-          //   <Button onClick={() => setIsPreviewOpen(!isPreviewOpen)} icon={<FileWordOutlined />}>
-          //     Договор
-          //   </Button>
-          //   {isPreviewOpen && <ContractPreview />}
-          <div
-            id="chat_contanier"
-            className="scrollbar-thumb-blue flex w-full flex-col gap-4 overflow-y-scroll pr-4 pt-4 scrollbar-thin scrollbar-track-transparent"
-          >
-            {messages !== undefined &&
-              messages.map((message, key) => {
-                if (message.text !== undefined && message.text[0] !== "*") {
-                  return (
-                    <Message
-                      key={key}
-                      type={message.type}
-                      text={message.text}
-                      buttons={message.buttons}
-                      // input={message.input}
-                      created_datetime={message.created_datetime}
-                      from={message.from}
-                      id={message.id}
-                      handleNewAction={handleNewAction}
-                      placeholder={message.placeholder}
-                      disabled={messages.length !== key + 1}
-                    />
-                  );
-                }
-              })}
+      {isLoading ? (
+        <>
+          <Skeleton.Button active={true} size="large" block={true} />
+          <Skeleton.Button active={true} size="large" block={true} />
+          <Skeleton.Button active={true} size="large" block={true} />
+        </>
+      ) : (
+        // <Flex>
+        //   <Button onClick={() => setIsPreviewOpen(!isPreviewOpen)} icon={<FileWordOutlined />}>
+        //     Договор
+        //   </Button>
+        //   {isPreviewOpen && <ContractPreview />}
+        <div
+          id="chat_contanier"
+          className="scrollbar-thumb-blue flex w-full flex-col gap-4 overflow-y-scroll pr-4 pt-4 scrollbar-thin scrollbar-track-transparent"
+        >
+          {messages !== undefined &&
+            messages.map((message, key) => {
+              if (message.text !== undefined && message.text[0] !== "*") {
+                return (
+                  <Message
+                    key={key}
+                    type={message.type}
+                    text={message.text}
+                    buttons={message.buttons}
+                    // input={message.input}
+                    created_datetime={message.created_datetime}
+                    from={message.from}
+                    id={message.id}
+                    handleNewAction={handleNewAction}
+                    placeholder={message.placeholder}
+                    disabled={messages.length !== key + 1}
+                  />
+                );
+              }
+            })}
 
-            {showFile && <FileMessage />}
-          </div>
-          // </Flex>
-        )}
+          {showFile && <FileMessage />}
+        </div>
+        // </Flex>
+      )}
 
-        <ChatInput isLoading={isLoading} handleSendNewMessage={handleSendNewMessage} />
-      </Flex>
+      <ChatInput isLoading={isLoading} handleSendNewMessage={handleSendNewMessage} />
+    </Flex>
     // <Flex className="w-full justify-between">
-      // {/* {isPreviewOpen && <ContractPreview/>} */}
-      // {/* <Button onClick={()=> setIsPreviewOpen(!isPreviewOpen)}>Открыть Файл</Button> */}
+    // {/* {isPreviewOpen && <ContractPreview/>} */}
+    // {/* <Button onClick={()=> setIsPreviewOpen(!isPreviewOpen)}>Открыть Файл</Button> */}
 
-      
     // {/* </Flex> */}
   );
 };

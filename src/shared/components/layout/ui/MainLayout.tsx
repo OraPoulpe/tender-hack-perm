@@ -21,7 +21,7 @@ export function MainLayout({ children }: { children: React.ReactNode }) {
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
-const [logout] = useLogoutUserMutation()
+  const [logout] = useLogoutUserMutation();
 
   const showModalSign = () => {
     setIsModalOpen(true);
@@ -32,7 +32,7 @@ const [logout] = useLogoutUserMutation()
   };
 
   const handleCancel = () => {
-    logout()
+    logout();
     signOut({ callbackUrl: "/login" });
     setIsModalOpen(false);
   };
