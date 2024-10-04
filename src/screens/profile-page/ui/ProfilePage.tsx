@@ -6,7 +6,7 @@ import React from "react";
 const ProfilePage = () => {
   const { data: userMe, isLoading } = useGetUserMeQuery();
 
-  console.log("userMe", userMe)
+  console.log("userMe", userMe);
 
   if (isLoading) {
     return (

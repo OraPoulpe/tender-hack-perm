@@ -22,10 +22,9 @@ const Message: FC<IMessagePops> = ({
 
   const handleSendInputMessage = () => {
     handleNewAction("*" + textInputMessage);
-    disabled = true
+    disabled = true;
     // setTextInputMessage('')
   };
-  
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === "Enter") {

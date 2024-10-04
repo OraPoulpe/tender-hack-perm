@@ -1,5 +1,5 @@
 # Определяем переменные
-IMAGE_NAME = my-nextjs-app
+IMAGE_NAME = tender
 TAG = latest
 
 # Команда для сборки Docker образа с указанием тега
